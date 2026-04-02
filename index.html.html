@@ -1,0 +1,276 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); color: var(--color-text-primary); background: transparent; }
+
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px;
+    background: #1a2e4a;
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 10px; }
+  .nav-logo {
+    width: 38px; height: 38px; background: #f0a500; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 500; font-size: 16px; color: #fff;
+  }
+  .nav-name { color: #fff; font-size: 17px; font-weight: 500; }
+  .nav-sub { color: #a0b8d0; font-size: 11px; }
+  .nav-links { display: flex; gap: 20px; }
+  .nav-links a { color: #a0b8d0; font-size: 13px; text-decoration: none; cursor: pointer; }
+  .nav-links a:hover { color: #fff; }
+
+  .hero {
+    background: linear-gradient(135deg, #1a2e4a 0%, #0d1e30 100%);
+    padding: 48px 32px 40px;
+    text-align: center;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(240,165,0,0.15); color: #f0a500;
+    padding: 4px 14px; border-radius: 20px; font-size: 12px; margin-bottom: 16px;
+  }
+  .hero h1 { color: #fff; font-size: 28px; font-weight: 500; line-height: 1.3; margin-bottom: 10px; }
+  .hero p { color: #8aaabf; font-size: 14px; max-width: 500px; margin: 0 auto 24px; line-height: 1.6; }
+  .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: #f0a500; color: #1a2e4a; padding: 11px 22px;
+    border-radius: var(--border-radius-md); font-size: 14px; font-weight: 500;
+    border: none; cursor: pointer;
+  }
+  .btn-outline {
+    background: transparent; color: #fff; padding: 11px 22px;
+    border-radius: var(--border-radius-md); font-size: 14px; font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.3); cursor: pointer;
+  }
+  .btn-outline:hover { border-color: #fff; }
+
+  .stats {
+    display: flex; justify-content: center; gap: 0;
+    background: #f0a500;
+  }
+  .stat { flex: 1; text-align: center; padding: 14px 8px; border-right: 1px solid rgba(0,0,0,0.1); }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-size: 20px; font-weight: 500; color: #1a2e4a; }
+  .stat-lbl { font-size: 11px; color: #5a3f00; }
+
+  .section { padding: 36px 24px; }
+  .section-title { font-size: 18px; font-weight: 500; margin-bottom: 6px; }
+  .section-sub { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 24px; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+  .service-card {
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg); padding: 16px 14px;
+    text-align: center;
+  }
+  .service-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: #1a2e4a; color: #f0a500;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; margin: 0 auto 10px;
+  }
+  .service-name { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .service-desc { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; }
+
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .why-item { display: flex; align-items: flex-start; gap: 10px; }
+  .why-dot { width: 8px; height: 8px; background: #f0a500; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .why-text p { font-size: 13px; font-weight: 500; }
+  .why-text span { font-size: 12px; color: var(--color-text-secondary); }
+
+  .contact-section {
+    background: #1a2e4a;
+    padding: 28px 24px; border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+  }
+  .contact-title { color: #fff; font-size: 17px; font-weight: 500; margin-bottom: 4px; }
+  .contact-sub { color: #7a9ab0; font-size: 13px; margin-bottom: 20px; }
+  .contact-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+  .contact-call {
+    display: flex; align-items: center; gap: 8px;
+    background: #f0a500; color: #1a2e4a; padding: 11px 18px;
+    border-radius: var(--border-radius-md); font-size: 13px; font-weight: 500;
+    border: none; cursor: pointer;
+  }
+  .contact-wa {
+    display: flex; align-items: center; gap: 8px;
+    background: #25d366; color: #fff; padding: 11px 18px;
+    border-radius: var(--border-radius-md); font-size: 13px; font-weight: 500;
+    border: none; cursor: pointer;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 8px; }
+  .contact-row { display: flex; align-items: center; gap: 10px; }
+  .contact-row span { font-size: 13px; color: #8aabb0; }
+  .contact-row strong { font-size: 13px; color: #dce8f0; }
+
+  .divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 0; }
+  .footer-bar {
+    background: #0d1e30; padding: 10px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+  }
+  .footer-bar span { font-size: 11px; color: #4a6a7a; }
+
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 12px;
+    font-size: 11px; background: #e6f1fb; color: #185fa5;
+    margin-left: 6px;
+  }
+</style>
+
+<div class="nav">
+  <div class="nav-brand">
+    <div class="nav-logo">BA</div>
+    <div>
+      <div class="nav-name">Bright Associates</div>
+      <div class="nav-sub">Legal & Consulting Services</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a>Services</a>
+    <a>About</a>
+    <a>Contact</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-tag">Karasangal, Chennai</div>
+  <h1>Trusted Legal & Consulting<br>Associates in Chennai</h1>
+  <p>Professional guidance for your legal, property, and business needs — with honest advice, quick turnaround, and personal attention.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="sendPrompt('How do I get in touch with Bright Associates?')">Get Free Consultation</button>
+    <button class="btn-outline">Our Services ↓</button>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">500+</div>
+    <div class="stat-lbl">Cases handled</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">10+</div>
+    <div class="stat-lbl">Years experience</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">98%</div>
+    <div class="stat-lbl">Client satisfaction</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">24/7</div>
+    <div class="stat-lbl">Available</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Our Services</div>
+  <div class="section-sub">What can we help you with?</div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">⚖</div>
+      <div class="service-name">Legal Consultation</div>
+      <div class="service-desc">Civil, criminal & family court matters</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏠</div>
+      <div class="service-name">Property Services</div>
+      <div class="service-desc">Registration, documentation & disputes</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <div class="service-name">Document Work</div>
+      <div class="service-desc">Notary, affidavit & agreements</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <div class="service-name">Business Setup</div>
+      <div class="service-desc">Company registration & compliance</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📑</div>
+      <div class="service-name">GST / Tax Filing</div>
+      <div class="service-desc">GST returns, income tax & audits</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🤝</div>
+      <div class="service-name">Contract Drafting</div>
+      <div class="service-desc">Sale deeds, lease & MoU drafting</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <div class="section-title">Why choose us?</div>
+  <div class="section-sub">What makes Bright Associates different</div>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <div class="why-text">
+        <p>Local expertise</p>
+        <span>Deep knowledge of Chennai courts & rules</span>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <div class="why-text">
+        <p>Fast turnaround</p>
+        <span>Quick resolution, no unnecessary delays</span>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <div class="why-text">
+        <p>Affordable fees</p>
+        <span>Transparent pricing, no hidden charges</span>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <div class="why-text">
+        <p>Personal attention</p>
+        <span>Direct access to our senior associates</span>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <div class="why-text">
+        <p>Tamil & English</p>
+        <span>We speak your language, literally</span>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <div class="why-text">
+        <p>Trusted in community</p>
+        <span>Hundreds of clients from Karasangal area</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contact-section">
+  <div class="contact-title">Talk to us today</div>
+  <div class="contact-sub">Free first consultation — no obligation</div>
+  <div class="contact-btns">
+    <button class="contact-call">📞 Call Now</button>
+    <button class="contact-wa">💬 WhatsApp</button>
+  </div>
+  <div class="contact-info">
+    <div class="contact-row">
+      <span>Phone</span>
+      <strong>+91 XXXXX XXXXX</strong>
+    </div>
+    <div class="contact-row">
+      <span>Address</span>
+      <strong>Karasangal, Chennai, Tamil Nadu</strong>
+    </div>
+    <div class="contact-row">
+      <span>Hours</span>
+      <strong>Mon – Sat, 9am – 7pm</strong>
+    </div>
+  </div>
+</div>
